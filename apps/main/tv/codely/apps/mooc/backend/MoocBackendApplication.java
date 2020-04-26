@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 @SpringBootApplication(exclude = HibernateJpaAutoConfiguration.class)
 @ComponentScan(
-    includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = Service.class),
+    includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Service.class}),
     value = {"tv.codely.shared", "tv.codely.mooc", "tv.codely.apps.mooc.backend"}
 )
 public class MoocBackendApplication {

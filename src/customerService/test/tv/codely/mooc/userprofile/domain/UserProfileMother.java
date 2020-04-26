@@ -11,7 +11,7 @@ public final class UserProfileMother {
         UserProfileEmail email,
         UserProfileUsername username,
         UserProfilePassword password) {
-        return new UserProfile(id, name, lastName, cellPhoneNumber, email, username, password);
+        return UserProfile.create(id, name, lastName, cellPhoneNumber, email, username, password);
     }
 
     public static UserProfile random() {

@@ -1,5 +1,6 @@
 package tv.codely.shared.domain.bus.event;
 
+import lombok.Getter;
 import tv.codely.shared.domain.Utils;
 
 import java.io.Serializable;
@@ -7,6 +8,7 @@ import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.UUID;
 
+@Getter
 public abstract class DomainEvent {
     private String aggregateId;
     private String eventId;
@@ -37,16 +39,4 @@ public abstract class DomainEvent {
         String eventId,
         String occurredOn
     );
-
-    public String aggregateId() {
-        return aggregateId;
-    }
-
-    public String eventId() {
-        return eventId;
-    }
-
-    public String occurredOn() {
-        return occurredOn;
-    }
 }
