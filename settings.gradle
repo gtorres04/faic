@@ -1,4 +1,4 @@
-rootProject.name = 'java-ddd-skeleton'
+rootProject.name = 'faic'
 
 include ':shared'
 project(':shared').projectDir = new File('src/shared')
@@ -9,5 +9,5 @@ project(':analytics').projectDir = new File('src/analytics')
 include ':backoffice'
 project(':backoffice').projectDir = new File('src/backoffice')
 
-include ':mooc'
-project(':mooc').projectDir = new File('src/mooc')
+include ':customerService'
+project(':customerService').projectDir = new File('src/customerService')

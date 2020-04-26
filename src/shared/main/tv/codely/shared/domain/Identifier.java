@@ -1,10 +1,13 @@
 package tv.codely.shared.domain;
 
+import lombok.Getter;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
 public abstract class Identifier implements Serializable {
+    @Getter
     final protected String value;
 
     public Identifier(String value) {
@@ -15,10 +18,6 @@ public abstract class Identifier implements Serializable {
 
     protected Identifier() {
         this.value = null;
-    }
-
-    public String value() {
-        return value;
     }
 
     @Override

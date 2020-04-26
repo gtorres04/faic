@@ -1,16 +1,15 @@
 package tv.codely.shared.domain;
 
+import lombok.Getter;
+
 import java.util.Objects;
 
 public abstract class StringValueObject {
+    @Getter
     private String value;
 
     public StringValueObject(String value) {
         this.value = value;
-    }
-
-    public String value() {
-        return value;
     }
 
     @Override
