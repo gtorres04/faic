@@ -1,11 +1,13 @@
 package tv.codely.shared.domain;
 
+import lombok.ToString;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@ToString
 public abstract class AggregateRoot {
     private List<DomainEvent> domainEvents = new ArrayList<>();
 

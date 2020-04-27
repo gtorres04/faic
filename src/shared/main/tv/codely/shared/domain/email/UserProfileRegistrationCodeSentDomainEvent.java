@@ -1,4 +1,4 @@
-package tv.codely.shared.domain.userprofile;
+package tv.codely.shared.domain.email;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -11,29 +11,33 @@ import java.util.HashMap;
 @Getter
 @EqualsAndHashCode
 @NoArgsConstructor(force = true)
-public final class UserProfileCreatedDomainEvent extends DomainEvent {
+public final class UserProfileRegistrationCodeSentDomainEvent extends DomainEvent {
+    private final String code;
     private final String name;
     private final String lastName;
-    private final Long cellPhoneNumber;
     private final String email;
     private final String username;
+    private final String status;;
 
-    public UserProfileCreatedDomainEvent(String id, String name, String lastName, Long cellPhoneNumber, String email, String username) {
+    public UserProfileRegistrationCodeSentDomainEvent(String id, String code, String name, String lastName, String email, String username,
+                                                      String status) {
         super(id);
+        this.code = code;
         this.name     = name;
         this.lastName = lastName;
-        this.cellPhoneNumber = cellPhoneNumber;
         this.email = email;
         this.username = username;
+        this.status = status;
     }
 
-    public UserProfileCreatedDomainEvent(String id, String eventId, String occurredOn, String name, String lastName, Long cellPhoneNumber, String email, String username) {
+    public UserProfileRegistrationCodeSentDomainEvent(String id, String eventId, String occurredOn, String code, String name, String lastName, String email, String username, String status) {
         super(id);
         this.name     = name;
         this.lastName = lastName;
-        this.cellPhoneNumber = cellPhoneNumber;
+        this.code = code;
         this.email = email;
         this.username = username;
+        this.status = status;
     }
 
     @Override
@@ -46,28 +50,30 @@ public final class UserProfileCreatedDomainEvent extends DomainEvent {
         return new HashMap<String, Serializable>() {{
             put("name", name);
             put("lastName", lastName);
-            put("cellPhoneNumber", cellPhoneNumber);
+            put("code", code);
             put("email", email);
             put("username", username);
+            put("status", status);
         }};
     }
 
     @Override
-    public UserProfileCreatedDomainEvent fromPrimitives(
+    public UserProfileRegistrationCodeSentDomainEvent fromPrimitives(
         String aggregateId,
         HashMap<String, Serializable> body,
         String eventId,
         String occurredOn
     ) {
-        return new UserProfileCreatedDomainEvent(
+        return new UserProfileRegistrationCodeSentDomainEvent(
             aggregateId,
             eventId,
             occurredOn,
+            (String) body.get("code"),
             (String) body.get("name"),
             (String) body.get("lastName"),
-            (Long) body.get("cellPhoneNumber"),
             (String) body.get("email"),
-            (String) body.get("username")
+            (String) body.get("username"),
+            (String) body.get("status")
         );
     }
 }

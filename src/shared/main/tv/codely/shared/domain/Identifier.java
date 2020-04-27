@@ -1,11 +1,13 @@
 package tv.codely.shared.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+@ToString
 public abstract class Identifier implements Serializable {
     @Getter
     final protected String value;

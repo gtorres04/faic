@@ -9,6 +9,7 @@ import tv.codely.shared.domain.userprofile.UserProfileCreatedDomainEvent;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @EqualsAndHashCode
+@ToString(callSuper = true)
 public final class UserProfile extends AggregateRoot {
     private UserProfileId id;
     private UserProfileName name;
@@ -18,6 +19,20 @@ public final class UserProfile extends AggregateRoot {
     private UserProfileUsername username;
     private UserProfilePassword password;
 
+    private UserProfile(UserProfileId id,
+                        UserProfileName name,
+                        UserProfileLastName lastName,
+                        UserProfileEmail email,
+                        UserProfileCellPhoneNumber cellPhoneNumber,
+                        UserProfileUsername username){
+        this.id = id;
+        this.name = name;
+        this.lastName = lastName;
+        this.email = email;
+        this.username = username;
+        this.cellPhoneNumber = cellPhoneNumber;
+    }
+
     public static UserProfile create(UserProfileId id,
         UserProfileName name,
         UserProfileLastName lastName,
@@ -26,7 +41,18 @@ public final class UserProfile extends AggregateRoot {
         UserProfileUsername username,
         UserProfilePassword password){
         UserProfile userProfile = new UserProfile(id, name, lastName, cellPhoneNumber, email, username, password);
-        userProfile.record(new UserProfileCreatedDomainEvent());
+        userProfile.record(new UserProfileCreatedDomainEvent(id.value(), name.value(), lastName.value(), cellPhoneNumber.value(), email.value(), username.value()));
+        return userProfile;
+    }
+
+
+    public static UserProfile createUserProfileForSendRegistrationCode(UserProfileId id,
+                                                                       UserProfileName name,
+                                                                       UserProfileLastName lastName,
+                                                                       UserProfileEmail email,
+                                                                       UserProfileCellPhoneNumber cellPhoneNumber,
+                                                                       UserProfileUsername username){
+        UserProfile userProfile = new UserProfile(id, name, lastName, email, cellPhoneNumber, username);
         return userProfile;
     }
 
