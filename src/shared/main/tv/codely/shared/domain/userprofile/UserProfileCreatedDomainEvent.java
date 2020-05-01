@@ -1,5 +1,6 @@
 package tv.codely.shared.domain.userprofile;
 
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import java.util.HashMap;
 
 @Getter
 @EqualsAndHashCode
-@NoArgsConstructor(force = true)
+@NoArgsConstructor(force = true, access = AccessLevel.PRIVATE)
 public final class UserProfileCreatedDomainEvent extends DomainEvent {
     private final String name;
     private final String lastName;
@@ -28,7 +29,7 @@ public final class UserProfileCreatedDomainEvent extends DomainEvent {
     }
 
     public UserProfileCreatedDomainEvent(String id, String eventId, String occurredOn, String name, String lastName, Long cellPhoneNumber, String email, String username) {
-        super(id);
+        super(id, eventId, occurredOn);
         this.name     = name;
         this.lastName = lastName;
         this.cellPhoneNumber = cellPhoneNumber;
