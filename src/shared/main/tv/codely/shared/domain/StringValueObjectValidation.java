@@ -4,11 +4,11 @@ import lombok.Getter;
 
 import java.util.Objects;
 
-public abstract class StringValueObject{
+public abstract class StringValueObjectValidation extends AValueObject{
     @Getter
     private String value;
 
-    public StringValueObject(String value) {
+    public StringValueObjectValidation(String value) {
         this.value = value;
     }
 
@@ -22,10 +22,10 @@ public abstract class StringValueObject{
         if (this == o) {
             return true;
         }
-        if (!(o instanceof StringValueObject)) {
+        if (!(o instanceof StringValueObjectValidation)) {
             return false;
         }
-        StringValueObject that = (StringValueObject) o;
+        StringValueObjectValidation that = (StringValueObjectValidation) o;
         return Objects.equals(value, that.value);
     }
 

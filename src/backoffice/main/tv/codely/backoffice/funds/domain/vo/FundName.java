@@ -1,30 +1,26 @@
 package tv.codely.backoffice.funds.domain.vo;
 
-import tv.codely.backoffice.funds.domain.FundsFinder;
 import tv.codely.backoffice.funds.domain.exceptions.FundNameException;
-import tv.codely.shared.domain.StringValueObject;
+import tv.codely.backoffice.funds.domain.service.FundsFinder;
+import tv.codely.shared.domain.IFinder;
+import tv.codely.shared.domain.StringValueObjectValidation;
 
 import java.util.stream.IntStream;
 
-public final class FundName extends StringValueObject {
+public final class FundName extends StringValueObjectValidation {
 
-    private final FundsFinder finder;
+    private FundsFinder finder;
 
-    private FundName(String value, FundsFinder finder) {
-        super(value);
-        this.finder = finder;
-        ensureNull(value);
-        ensureEmpty(value);
-        ensureNotStartWithNumbers(value);
-        ensureThatTheFundNameDoesNotExist(value);
-    }
     private FundName(String value){
         super(value);
-        this.finder = null;
     }
 
-    public static FundName createToCreateFund(String name, FundsFinder finder){
-        return new FundName(name, finder);
+    public static FundName createFromCommand(String name){
+        return new FundName(name);
+    }
+
+    private static FundName createFundNameToFinderIfExist(String name) {
+        return new FundName(name);
     }
 
     private void ensureNotStartWithNumbers(String value) {
@@ -49,7 +45,13 @@ public final class FundName extends StringValueObject {
             throw new FundNameException(String.format("El nombre '%s' dado al fondo ya existe en otro fondo", name));
     }
 
-    private static FundName createFundNameToFinderIfExist(String name) {
-        return new FundName(name);
+
+    @Override
+    public void valid(IFinder finder) {
+        this.finder = (FundsFinder) finder;
+            ensureNull(value());
+            ensureEmpty(value());
+            ensureNotStartWithNumbers(value());
+            ensureThatTheFundNameDoesNotExist(value());
     }
 }

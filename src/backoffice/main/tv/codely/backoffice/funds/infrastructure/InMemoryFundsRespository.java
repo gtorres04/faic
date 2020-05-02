@@ -1,15 +1,14 @@
 package tv.codely.backoffice.funds.infrastructure;
 
 import tv.codely.backoffice.funds.domain.Fund;
-import tv.codely.backoffice.funds.domain.IFundRepository;
+import tv.codely.backoffice.funds.domain.IFundsRepository;
 import tv.codely.shared.infrastructure.Adapter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 @Adapter
-public final class InMemoryFundsRespository implements IFundRepository {
+public final class InMemoryFundsRespository implements IFundsRepository {
     Map<String, Fund> map = new HashMap<>();
     @Override
     public void save(Fund fund) {

@@ -8,8 +8,10 @@ import tv.codely.apps.backoffice.backend.config.BackofficeBackendServerConfigura
 import tv.codely.apps.backoffice.backend.config.BackofficeBackendServerPortCustomizer;
 import tv.codely.apps.backoffice.backend.controller.courses.CoursesGetController;
 import tv.codely.apps.backoffice.backend.controller.health_check.HealthCheckGetController;
+import tv.codely.shared.application.CommandHandler;
 import tv.codely.shared.domain.CaseOfUse;
 import tv.codely.shared.domain.DomainService;
+import tv.codely.shared.domain.Factory;
 import tv.codely.shared.domain.Service;
 import tv.codely.shared.infrastructure.Adapter;
 
@@ -29,8 +31,11 @@ import java.util.HashMap;
         CoursesGetController.class,
         HealthCheckGetController.class
     })},
-    includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {Service.class, CaseOfUse.class, Adapter.class, DomainService.class}),
-    value = {"tv.codely.shared.infrastructure.bus.event.spring", "tv.codely.backoffice.funds", "tv.codely.apps.backoffice.backend"}
+    includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
+        Service.class, CommandHandler.class, CaseOfUse.class, Adapter.class, DomainService.class,
+        Factory.class
+    }),
+    value = {"tv.codely.shared.infrastructure.bus.command", "tv.codely.shared.infrastructure.bus.query", "tv.codely.shared.infrastructure.bus.event.spring", "tv.codely.backoffice.funds", "tv.codely.apps.backoffice.backend"}
 )
 public class BackofficeBackendApplication {
     public static HashMap<String, Class<?>> commands() {
