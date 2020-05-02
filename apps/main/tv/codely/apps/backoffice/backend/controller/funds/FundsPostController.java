@@ -38,8 +38,7 @@ public final class FundsPostController extends ApiController {
     @PostMapping("/funds")
     public ResponseEntity create(@RequestBody Request request) {
         try {
-            dispatch(new CreateFundCommand(UUID.nameUUIDFromBytes(request.toString().getBytes()).toString(),
-                request.name()));
+            dispatch(new CreateFundCommand(request.name()));
         } catch (CommandHandlerExecutionError commandHandlerExecutionError) {
             CreatorException creatorException = (CreatorException) commandHandlerExecutionError.getCause();
             List<RequestError> list = creatorException.exceptions().stream()

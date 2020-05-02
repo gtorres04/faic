@@ -40,9 +40,9 @@ public final class FundName extends StringValueObjectValidation {
             throw new FundNameException("El nombre del fondo no puede ser vacio");
     }
 
-    private void ensureThatTheFundNameDoesNotExist(String name) {
-        if(finder.doesNameOfFundExists(createFundNameToFinderIfExist(name)))
-            throw new FundNameException(String.format("El nombre '%s' dado al fondo ya existe en otro fondo", name));
+    private void ensureThatTheFundNameDoesNotExist() {
+        if(finder.doesNameOfFundExists(this))
+            throw new FundNameException(String.format("El nombre '%s' dado al fondo ya existe en otro fondo", value()));
     }
 
 
@@ -52,6 +52,6 @@ public final class FundName extends StringValueObjectValidation {
             ensureNull(value());
             ensureEmpty(value());
             ensureNotStartWithNumbers(value());
-            ensureThatTheFundNameDoesNotExist(value());
+            ensureThatTheFundNameDoesNotExist();
     }
 }

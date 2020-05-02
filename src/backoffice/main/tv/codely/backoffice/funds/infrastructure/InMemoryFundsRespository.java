@@ -16,7 +16,12 @@ public final class InMemoryFundsRespository implements IFundsRepository {
     }
 
     @Override
-    public boolean doesNameOfFundExists(String value) {
-        return map.values().stream().anyMatch(fund -> value.equals(fund.name().value()));
+    public boolean doesNameOfFundExists(String name) {
+        return map.values().stream().anyMatch(fund -> name.equals(fund.name().value()));
+    }
+
+    @Override
+    public boolean doesIdOfFundExists(String id) {
+        return null != map.get(id);
     }
 }

@@ -2,6 +2,7 @@ package tv.codely.backoffice.funds.domain.service;
 
 import lombok.AllArgsConstructor;
 import tv.codely.backoffice.funds.domain.IFundsRepository;
+import tv.codely.backoffice.funds.domain.vo.FundId;
 import tv.codely.backoffice.funds.domain.vo.FundName;
 import tv.codely.shared.domain.DomainService;
 import tv.codely.shared.domain.IFinder;
@@ -14,5 +15,9 @@ public final class FundsFinder implements IFinder {
 
     public boolean doesNameOfFundExists(FundName name) {
         return repository.doesNameOfFundExists(name.value());
+    }
+
+    public boolean doesIdOfFundExists(FundId id) {
+        return repository.doesIdOfFundExists(id.value());
     }
 }
