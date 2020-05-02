@@ -15,7 +15,6 @@ import tv.codely.shared.domain.bus.command.CommandHandler;
 public final class CreateFundCommandHandler implements CommandHandler<CreateFundCommand> {
 
     private final FundsCreator creator;
-    private final FundsFinder finder;
 
     @Override
     public void handle(CreateFundCommand command) {
