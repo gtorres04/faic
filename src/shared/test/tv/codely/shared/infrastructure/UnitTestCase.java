@@ -1,7 +1,13 @@
 package tv.codely.shared.infrastructure;
 
 import org.junit.jupiter.api.BeforeEach;
-import tv.codely.shared.domain.UuidGenerator;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.FilterType;
+import org.springframework.context.annotation.Primary;
+import tv.codely.shared.application.CommandHandler;
+import tv.codely.shared.domain.*;
 import tv.codely.shared.domain.bus.event.DomainEvent;
 import tv.codely.shared.domain.bus.event.EventBus;
 import tv.codely.shared.domain.bus.query.*;
