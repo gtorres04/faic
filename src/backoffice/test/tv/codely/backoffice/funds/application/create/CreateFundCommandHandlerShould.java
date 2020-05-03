@@ -62,5 +62,8 @@ final class CreateFundCommandHandlerShould extends FundsModuleUnitTestCase {
 
         CreateFundCommand commandNumber = CreateFundCommandMother.create("12");
         Assertions.assertThrows(CreatorException.class, () -> handler.handle(commandNumber));
+
+        CreateFundCommand commandNull = CreateFundCommandMother.create(null);
+        Assertions.assertThrows(CreatorException.class, () -> handler.handle(commandNumber));
     }
 }

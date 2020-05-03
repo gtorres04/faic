@@ -18,29 +18,25 @@ public final class FundsPostControllerShould extends ApplicationTestCase {
             "/funds",
             "{\"name\":\"SameName\"}",
             201);
-        assertRequestWithBodyAndResponseWithBody("POST",
+        assertRequestWithBody("POST",
             "/funds",
             "{\"name\":\"SameName\"}",
-            400,
-            "[{\"error-code\":400,\"user-message\":\"El nombre 'SameName' dado al fondo ya existe en otro fondo\",\"technical-message\":\"N/A\"}]");
+            400);
     }
 
     @Test
     void create_a_fund_with_characters_no_valids() throws Exception {
-        assertRequestWithBodyAndResponseWithBody("POST",
+        assertRequestWithBody("POST",
             "/funds",
             "{\"name\":\"\"}",
-            400,
-            "[{\"error-code\":400, \"user-message\":\"El nombre del fondo no puede ser vacio\",\"technical-message\":\"N/A\"}]");
-        assertRequestWithBodyAndResponseWithBody("POST",
+            400);
+        assertRequestWithBody("POST",
             "/funds",
             "{\"name\":12}",
-            400,
-            "[{\"error-code\":400, \"user-message\":\"El nombre del fondo no puede inciar con un numero\",\"technical-message\":\"N/A\"}]");
-        assertRequestWithBodyAndResponseWithBody("POST",
+            400);
+        assertRequestWithBody("POST",
             "/funds",
             "{}",
-            400,
-            "[{\"error-code\":400, \"user-message\":\"Para crear el fondo debe enviar un nombre\",\"technical-message\":\"N/A\"}]");
+            400);
     }
 }
