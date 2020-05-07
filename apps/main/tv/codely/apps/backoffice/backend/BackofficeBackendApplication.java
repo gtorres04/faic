@@ -35,7 +35,7 @@ import java.util.HashMap;
         Service.class, CommandHandler.class, CaseOfUse.class, Adapter.class, DomainService.class,
         Factory.class
     }),
-    value = {"tv.codely.shared.infrastructure.bus.command", "tv.codely.shared.infrastructure.bus.query", "tv.codely.shared.infrastructure.bus.event.spring", "tv.codely.backoffice.funds", "tv.codely.apps.backoffice.backend"}
+    value = {"tv.codely.shared.infrastructure.bus.command", "tv.codely.shared.infrastructure.bus.query", "tv.codely.shared.infrastructure.bus.event.spring", "tv.codely.backoffice.funds", "tv.codely.backoffice.auth", "tv.codely.apps.backoffice.backend"}
 )
 public class BackofficeBackendApplication {
     public static HashMap<String, Class<?>> commands() {
