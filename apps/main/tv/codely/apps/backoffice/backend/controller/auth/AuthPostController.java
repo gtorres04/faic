@@ -8,12 +8,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tv.codely.backoffice.authentication.application.authenticate.AuthenticateUserCommand;
+import tv.codely.backoffice.authentication.application.authenticate.AuthenticationTokenResponse;
+import tv.codely.backoffice.authentication.application.authenticate.SearchAuthenticationTokenByUsernameQuery;
 import tv.codely.shared.domain.DomainError;
 import tv.codely.shared.domain.bus.command.CommandBus;
 import tv.codely.shared.domain.bus.query.QueryBus;
 import tv.codely.shared.infrastructure.spring.ApiController;
 
 import java.util.HashMap;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.POST})
@@ -28,7 +31,11 @@ public final class AuthPostController extends ApiController {
     ) {
         AuthenticateUserCommand authenticateUserCommand = new AuthenticateUserCommand(requestAuth.username(), requestAuth.password());
         dispatch(authenticateUserCommand);
-        return new ResponseEntity(HttpStatus.CREATED);
+        SearchAuthenticationTokenByUsernameQuery tokenByUsernameQuery =
+            SearchAuthenticationTokenByUsernameQuery.createAfterOfAuthenticate(Optional.ofNullable(requestAuth.username()));
+        AuthenticationTokenResponse authenticationTokenResponse = ask(tokenByUsernameQuery);
+        return new ResponseEntity(authenticationTokenResponse.token()
+            .get(),HttpStatus.CREATED);
     }
 
     @Override

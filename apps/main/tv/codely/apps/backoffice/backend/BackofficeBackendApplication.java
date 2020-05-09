@@ -2,6 +2,7 @@ package tv.codely.apps.backoffice.backend;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 import tv.codely.apps.backoffice.backend.config.BackofficeBackendServerConfiguration;
@@ -9,11 +10,10 @@ import tv.codely.apps.backoffice.backend.config.BackofficeBackendServerPortCusto
 import tv.codely.apps.backoffice.backend.controller.courses.CoursesGetController;
 import tv.codely.apps.backoffice.backend.controller.health_check.HealthCheckGetController;
 import tv.codely.shared.application.CommandHandler;
-import tv.codely.shared.domain.CaseOfUse;
-import tv.codely.shared.domain.DomainService;
-import tv.codely.shared.domain.Factory;
-import tv.codely.shared.domain.Service;
+import tv.codely.shared.application.QueryHandler;
+import tv.codely.shared.domain.*;
 import tv.codely.shared.infrastructure.Adapter;
+import tv.codely.shared.infrastructure.JavaUuidGenerator;
 
 import java.util.HashMap;
 
@@ -32,14 +32,19 @@ import java.util.HashMap;
         HealthCheckGetController.class
     })},
     includeFilters = @ComponentScan.Filter(type = FilterType.ANNOTATION, classes = {
-        Service.class, CommandHandler.class, CaseOfUse.class, Adapter.class, DomainService.class,
+        Service.class, CommandHandler.class, QueryHandler.class, CaseOfUse.class, Adapter.class, DomainService.class,
         Factory.class
     }),
-    value = {"tv.codely.shared.infrastructure.bus.command", "tv.codely.shared.infrastructure.bus.query", "tv.codely.shared.infrastructure.bus.event.spring", "tv.codely.backoffice.funds", "tv.codely.backoffice.auth", "tv.codely.apps.backoffice.backend"}
+    value = {"tv.codely.shared.infrastructure.bus.command", "tv.codely.shared.infrastructure.bus.query", "tv.codely.shared.infrastructure.bus.event.spring", "tv.codely.backoffice.funds", "tv.codely.backoffice.authentication", "tv.codely.apps.backoffice.backend"}
 )
 public class BackofficeBackendApplication {
     public static HashMap<String, Class<?>> commands() {
         return new HashMap<String, Class<?>>() {{
         }};
+    }
+
+    @Bean
+    public UuidGenerator generator(){
+        return new JavaUuidGenerator();
     }
 }
