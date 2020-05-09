@@ -1,8 +1,8 @@
 package tv.codely.apps.backoffice.backend.middleware;
 
-import tv.codely.backoffice.auth.application.authenticate.AuthenticateUserCommand;
-import tv.codely.backoffice.auth.domain.InvalidAuthCredentials;
-import tv.codely.backoffice.auth.domain.InvalidAuthUsername;
+import tv.codely.backoffice.authentication.application.authenticate.AuthenticateUserCommand;
+import tv.codely.backoffice.authentication.domain.InvalidAuthCredentials;
+import tv.codely.backoffice.authentication.domain.InvalidAuthUsername;
 import tv.codely.shared.domain.bus.command.CommandBus;
 import tv.codely.shared.domain.bus.command.CommandHandlerExecutionError;
 

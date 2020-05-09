@@ -1,4 +1,4 @@
-package tv.codely.backoffice.auth.domain;
+package tv.codely.backoffice.authentication.domain;
 
 public final class AuthUser {
     private final AuthUsername username;

@@ -1,4 +1,4 @@
-package tv.codely.backoffice.auth.domain;
+package tv.codely.backoffice.authentication.domain;
 
 import tv.codely.shared.domain.StringValueObject;
 

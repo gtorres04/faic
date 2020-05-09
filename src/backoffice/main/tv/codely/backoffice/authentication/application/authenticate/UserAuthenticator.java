@@ -1,6 +1,6 @@
-package tv.codely.backoffice.auth.application.authenticate;
+package tv.codely.backoffice.authentication.application.authenticate;
 
-import tv.codely.backoffice.auth.domain.*;
+import tv.codely.backoffice.authentication.domain.*;
 import tv.codely.shared.domain.Service;
 
 import java.util.Optional;

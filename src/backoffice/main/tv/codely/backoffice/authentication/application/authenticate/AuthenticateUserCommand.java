@@ -1,4 +1,4 @@
-package tv.codely.backoffice.auth.application.authenticate;
+package tv.codely.backoffice.authentication.application.authenticate;
 
 import tv.codely.shared.domain.bus.command.Command;
 

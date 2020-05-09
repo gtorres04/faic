@@ -1,12 +1,12 @@
-package tv.codely.backoffice.auth.application.authenticate;
+package tv.codely.backoffice.authentication.application.authenticate;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import tv.codely.backoffice.auth.AuthModuleUnitTestCase;
-import tv.codely.backoffice.auth.domain.AuthUser;
-import tv.codely.backoffice.auth.domain.AuthUserMother;
-import tv.codely.backoffice.auth.domain.InvalidAuthCredentials;
-import tv.codely.backoffice.auth.domain.InvalidAuthUsername;
+import tv.codely.backoffice.authentication.AuthModuleUnitTestCase;
+import tv.codely.backoffice.authentication.domain.AuthUser;
+import tv.codely.backoffice.authentication.domain.AuthUserMother;
+import tv.codely.backoffice.authentication.domain.InvalidAuthCredentials;
+import tv.codely.backoffice.authentication.domain.InvalidAuthUsername;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 

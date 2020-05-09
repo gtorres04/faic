@@ -1,7 +1,7 @@
-package tv.codely.backoffice.auth.application.authenticate;
+package tv.codely.backoffice.authentication.application.authenticate;
 
-import tv.codely.backoffice.auth.domain.AuthPassword;
-import tv.codely.backoffice.auth.domain.AuthUsername;
+import tv.codely.backoffice.authentication.domain.AuthPassword;
+import tv.codely.backoffice.authentication.domain.AuthUsername;
 import tv.codely.shared.domain.Service;
 import tv.codely.shared.domain.bus.command.CommandHandler;
 

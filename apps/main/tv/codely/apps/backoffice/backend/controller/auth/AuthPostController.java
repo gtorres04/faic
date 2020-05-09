@@ -7,21 +7,13 @@ import lombok.ToString;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import tv.codely.backoffice.auth.application.authenticate.AuthenticateUserCommand;
-import tv.codely.backoffice.courses.application.BackofficeCoursesResponse;
-import tv.codely.backoffice.courses.application.search_by_criteria.SearchBackofficeCoursesByCriteriaQuery;
+import tv.codely.backoffice.authentication.application.authenticate.AuthenticateUserCommand;
 import tv.codely.shared.domain.DomainError;
 import tv.codely.shared.domain.bus.command.CommandBus;
 import tv.codely.shared.domain.bus.query.QueryBus;
-import tv.codely.shared.domain.bus.query.QueryHandlerExecutionError;
 import tv.codely.shared.infrastructure.spring.ApiController;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "*", methods = {RequestMethod.POST})

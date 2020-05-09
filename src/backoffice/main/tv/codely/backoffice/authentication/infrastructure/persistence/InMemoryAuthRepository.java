@@ -1,9 +1,9 @@
-package tv.codely.backoffice.auth.infrastructure.persistence;
+package tv.codely.backoffice.authentication.infrastructure.persistence;
 
-import tv.codely.backoffice.auth.domain.AuthPassword;
-import tv.codely.backoffice.auth.domain.AuthRepository;
-import tv.codely.backoffice.auth.domain.AuthUser;
-import tv.codely.backoffice.auth.domain.AuthUsername;
+import tv.codely.backoffice.authentication.domain.AuthPassword;
+import tv.codely.backoffice.authentication.domain.AuthRepository;
+import tv.codely.backoffice.authentication.domain.AuthUser;
+import tv.codely.backoffice.authentication.domain.AuthUsername;
 import tv.codely.shared.domain.Service;
 
 import java.util.HashMap;

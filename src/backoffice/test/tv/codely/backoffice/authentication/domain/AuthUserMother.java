@@ -1,6 +1,6 @@
-package tv.codely.backoffice.auth.domain;
+package tv.codely.backoffice.authentication.domain;
 
-import tv.codely.backoffice.auth.application.authenticate.AuthenticateUserCommand;
+import tv.codely.backoffice.authentication.application.authenticate.AuthenticateUserCommand;
 
 public final class AuthUserMother {
     public static AuthUser create(AuthUsername username, AuthPassword password) {

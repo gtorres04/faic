@@ -1,10 +1,10 @@
-package tv.codely.backoffice.auth;
+package tv.codely.backoffice.authentication;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
-import tv.codely.backoffice.auth.domain.AuthRepository;
-import tv.codely.backoffice.auth.domain.AuthUser;
-import tv.codely.backoffice.auth.domain.AuthUsername;
+import tv.codely.backoffice.authentication.domain.AuthRepository;
+import tv.codely.backoffice.authentication.domain.AuthUser;
+import tv.codely.backoffice.authentication.domain.AuthUsername;
 import tv.codely.shared.infrastructure.UnitTestCase;
 
 import java.util.Optional;
